@@ -1,3 +1,21 @@
+###############################################################################
+# On-screen debug displays
+var enableOSD = func {
+    var left  = screen.display.new(20, 10);
+    var right = screen.display.new(-300, 10);
+
+    left.add("/sim/model/cargo-auto-hook");
+    left.add("/controls/cargo-release");
+    left.add("/sim/model/cargo-hook");
+
+    right.add("/sim/hitches/aerotow/tow/length");
+    right.add("/sim/hitches/aerotow/rope/rope-diameter-mm");
+    right.add("/position/longitude-deg");
+
+}
+# Debug settings.
+#enableOSD();
+
 #################################### Begin Cargo.nas ################################################
 
 #possibly replace key binding xml entries in airplane/airplane-set.xml
@@ -273,6 +291,7 @@ var init_cargo = func {
 		print("No AI Cargo, exiting Cargo.nas!");
 		return;
 	}
+
 	############################ End Forced Exit ############################
 	aircraftCargo = AircraftCargo.new();
     var ct=0;
@@ -288,7 +307,7 @@ var init_cargo = func {
             cargoN.getNode( "orientation/true-heading-deg" ).getValue() ~ "\n");
         if (ct==2) break;
 	}
-	
+
 	#gui.fpsDisplay(1);
 	init_towCargo_dialog();
 }

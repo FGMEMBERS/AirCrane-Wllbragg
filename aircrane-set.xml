@@ -17,7 +17,13 @@
       <cockpit type="int"> 1 </cockpit>
       <model type="int">   4 </model>
     </rating>
-    
+
   </sim>
+
+  <nasal>
+      <logger>
+        <file>Aircraft/AirCrane/Nasal/generic/logger.nas</file>
+      </logger>
+  </nasal>
 
 </PropertyList>
