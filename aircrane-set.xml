@@ -4,8 +4,8 @@
 
   <sim>
 
-    <description>AirCrane (Yasim)</description>
-    <author>BARANGER Emmanuel (3D), Heiko Schulz (FDM)</author>
+    <description>AirCrane (Yasim) _cargo modifié</description>
+    <author>BARANGER Emmanuel (3D), Heiko Schulz (FDM), Wayne Bragg (cargo), Vivian (?) (aerotow)</author>
     <status>alpha</status>
     <license>GPL v2</license>
     <flight-model>yasim</flight-model>
@@ -17,13 +17,7 @@
       <cockpit type="int"> 1 </cockpit>
       <model type="int">   4 </model>
     </rating>
-
+    
   </sim>
-
-  <nasal>
-      <logger>
-        <file>Aircraft/AirCrane/Nasal/generic/logger.nas</file>
-      </logger>
-  </nasal>
 
 </PropertyList>

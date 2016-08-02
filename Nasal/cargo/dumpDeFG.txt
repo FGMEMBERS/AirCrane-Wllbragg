@@ -1,0 +1,13 @@
+Enabling ATI viewport hack
+Starting automatic scenery download/synchronization. Using built-in SVN support. Directory: '/home/ponpon/.fgfs/TerraSync'.
+towing is active!
+Nasal runtime error: non-objects have no members
+  at /input/joysticks/js[1]/nasal, line 4
+osgDB ac3d reader: could not find texture "101-tex.png"
+
+osgDB ac3d reader: could not find texture "101-tex.png"
+
+unknown vasi/papi configuration, count = 1
+unknown vasi/papi configuration, count = 1
+unknown vasi/papi configuration, count = 1
+unknown vasi/papi configuration, count = 1

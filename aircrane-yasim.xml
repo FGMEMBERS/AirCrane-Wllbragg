@@ -89,7 +89,7 @@
          <control-input axis="/controls/engines/engine[0]/throttle" control="CYCLICAIL" src0="0.0" src1="1.0" dst0="-0.1" dst1="0.1"/>
          <control-input axis="/controls/flight/elevator-trim" control="CYCLICELE" split="true"/>
          <control-input axis="/controls/flight/fcs/pitch" control="CYCLICELE" src0="-1.0" src1="1.0" dst0="-1.0" dst1="1.0"/>
-         <control-input axis="/controls/engines/engine[0]/throttle" control="COLLECTIVE" src0="0.0" src1="1.0" dst0="1.0" dst1="-1.0"/>
+         <control-input axis="/controls/engines/engine[0]/throttle" control="COLLECTIVE" src0="0.0" src1="1.0" dst0="-1.0" dst1="1.0"/>
   </rotor>
 
   <rotor name="tail"

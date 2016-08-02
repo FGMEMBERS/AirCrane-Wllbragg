@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<name>hookAltitude</name>
+	<!--x>-2</x>
+	<y>2</y-->
+	<layout>vbox</layout>
+	<halign>left</halign>
+	<!--width>500</width-->
+        
+<nasal>
+</nasal>
+          
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>1</stretch></empty>
+
+    <text>
+      <label>Hook(ing) position</label>
+    </text>
+
+    <!--empty><stretch>1</stretch></empty>
+
+ 
+    <input>
+      <row>0</row><col>2</col>
+      <property>/sim/presets/airport-id</property>
+      <binding>
+        <command>nasal</command>
+        <script></script>
+      </binding>
+    </input-->
+  </group>
+  
+  <group>
+      <stretch>true</stretch>
+      <layout>vbox</layout>
+      <halign>center</halign>
+      <valign>top</valign>
+      <text>
+        <label>Hook assistant</label>
+      </text>
+
+    
+  <hrule/>
+  
+ 
+  <hrule/>
+  <group>
+    <layout>hbox</layout>
+	<default-padding>2</default-padding>
+	<font>
+		<name>HELVETICA_12</name>
+	</font>
+	<!--color>
+		<red>0</red>
+		<green>0</green>
+		<blue>0</blue>
+		<alpha>0</alpha>
+	</color-->
+        <text>altitude-agl-ft</text>
+	<text>
+		<label>000</label>
+		<property>/position/altitude-agl-ft</property>
+                <format>%3.0f</format>
+		<live>true</live>
+		<color>
+			<red>0.9</red>
+			<green>0.4</green>
+			<blue>0.2</blue>
+			<alpha>1</alpha>
+		</color>
+	</text>
+  </group>
+
+
+
+ </group>
+  <!-- possible draggers listing -->
+    <nasal>
+      <open>
+      </open>
+      <close>
+      </close>
+    </nasal>
+ 
+</PropertyList>

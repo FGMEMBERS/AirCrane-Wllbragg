@@ -6,7 +6,7 @@
   
   <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX MY CARGO ADDITION XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
 	<model>
-		<path>Aircraft/AirCrane/Models/Cargo.xml</path>
+		<path>Aircraft/AirCrane/Models/Cargo/Cargo.xml</path>
 		<name>Cargo</name>
         <condition>
           <property>sim/model/cargo-on-hook</property>
@@ -21,7 +21,7 @@
 				shippingContainerBig.ac
 					x-m = -2.5
 					y-m = 0
-					z-m = -3.85
+					z-m = -11
 				shippingContainerHuge.ac
 					x-m = -1.5
 					y-m = 0
@@ -35,9 +35,44 @@
 				y-m = 0
 				z-m = -30
 			-->
-			<x-m>-2.5</x-m>
-			<y-m>0</y-m>
-			<z-m>-3.85</z-m>
+			<x-m>
+				<nasal>
+				    <open>
+				      <![CDATA[
+       					props.globals.getNode("/ai/models/aircraft[1]/x-m-offset").getValue();
+					print(props.globals.getNode("/ai/models/aircraft[1]/x-m-offset").getValue());
+				      ]]>
+				    </open>
+				  </nasal>
+			</x-m>
+			<y-m>
+				<![CDATA[print(props.globals.getNode("/ai/models/aircraft[1]/y-m-offset").getValue());]]>
+			</y-m>
+			<!--y-m>
+				<binding>
+					<command>nasal</command>
+					<script>
+				
+				print(props.globals.getNode("/ai/models/aircraft[1]/y-m-offset").getValue());
+				#print("writing props in aircrane.xml");
+				
+					</script>
+				</binding>
+			</y-m-->
+			<z-m>-.5</z-m>
+                        <!--x-m>
+
+                            <property>/ai/models/aircraft[1]/x-m-offset</property>
+                            <offset>4</offset>
+                        </x-m>
+                        <y-m>
+                            <property>/ai/models/aircraft[1]/y-m-offset</property>
+                            <offset>0</offset>
+                        </y-m>
+                        <z-m>
+                            <property>/ai/models/aircraft[1]/z-m-offset</property>
+                            <offset>-10</offset>
+                        </z-m-->                        
             <pitch-deg>0</pitch-deg>
         </offsets>
     </model>

@@ -1,0 +1,841 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<name>hookAltitude</name>
+	<!--x>-2</x>
+	<y>2</y-->
+	<layout>vbox</layout>
+	<halign>left</halign>
+	<width>500</width>
+        
+<nasal>
+    <open>
+      <![CDATA[
+        var groups = cmdarg().getChildren("group")[1].getChildren("group");
+        var cargotypesNodes = groups[0].getChildren("radio");
+        #smcbfNodes[i].getChild(
+        
+       
+        var set_cargoType = func(m) {
+          set_radio(m);
+         }
+       #   for (var i = 0; i < size(cargotypesNodes); i +=1) {
+       #     var prop = cargotypesNodes[i].getChild("property").getValue();
+       #     props.globals.setprop("sim/model/cargo-type", (m == cargotypesNodes[i].getChild("value").getValue()));
+       #   }
+       #
+       #   if (m==1)
+       #   {
+       #     setprop("sim/model/cargo-type/dock", 1);
+       #     setprop("sim/model/cargo-type/rope", 0);
+       #   }
+       #   else
+       #   {
+       #     setprop("sim/model/cargo-type/dock", 0);
+       #     setprop("sim/model/cargo-type/rope", 1);
+       #   }
+       # };
+
+      var p = props.globals.getNode("/sim/gui/dialogs/hookAltitude/", 1);
+      var mode = {
+        cargo-type-rope: p.getNode("cargo-type-rope", 1),
+        cargo-type-dock: p.getNode("cargo-type-rope", 1),
+      };
+
+      var set_radio = func(m) {
+        foreach (var k; keys(mode)) {
+          mode[k].setBoolValue(m == k);
+        }
+      }
+
+      var initialized = 0;
+      foreach (var k; keys(mode)) {
+        if (mode[k].getType() == "NONE") {
+          mode[k].setBoolValue(0);
+        }
+        initialized += mode[k].getBoolValue();
+      }
+      if (!initialized) {
+        set_radio(props.globals.getprop("sim/model/cargo-type").setBoolValue(1));
+      }
+
+        ##### should be already defined before
+        #props.globals.initNode("sim/model/cargo-type", 0);
+        #props.globals.initNode("/sim/failure-manager/global-mtbf", 0);
+        #props.globals.initNode("/sim/failure-manager/global-mcbf", 0);
+
+        #set_cargoType(getprop("sim/model/cargo-type"));
+        
+      ]]>
+    </open>
+  </nasal>
+          
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>1</stretch></empty>
+
+    <text>
+      <label>Hook(ing) position</label>
+    </text>
+
+    <empty><stretch>1</stretch></empty>
+
+   <text>
+      <row>0</row><col>1</col>
+      <halign>right</halign>
+      <label>x according to (which) referentiel (start of rope, end of rope, point hooked on the aircraft?)</label>
+    </text>
+    <input>
+      <row>0</row><col>2</col>
+      <property>/sim/presets/airport-id</property>
+      <binding>
+        <command>nasal</command>
+        <script>set_radio("airport")</script>
+      </binding>
+    </input>
+  </group>
+  
+  <group>
+      <stretch>true</stretch>
+      <layout>vbox</layout>
+      <halign>center</halign>
+      <valign>top</valign>
+      <text>
+        <label>Cargo Type</label>
+      </text>
+    <group>
+      <layout>vbox</layout>
+      <default-padding>1</default-padding>
+      <text>
+        <label>  </label>
+      </text>
+    </group>
+    
+    <group>
+       <layout>hbox</layout>
+      <radio>
+        <halign>left</halign>
+        <property>/sim/gui/dialogs/hookAltitude/cargo-type-rope</property>
+        <live>true</live>
+        <value>0</value>
+        <label>Roped Cargo</label>
+        <binding>
+          <command>nasal</command>
+          <!--script>set_cargoType(0);</script-->
+          <script>set_radio(0);</script>
+        </binding>
+      </radio>
+
+      <radio>
+        <halign>left</halign>
+        <property>/sim/gui/dialogs/hookAltitude/cargo-type-dock</property>
+        <live>true</live>
+        <value>1</value>
+        <label>Hard Docked Cargo</label>
+        <binding>
+          <command>nasal</command>
+          <!--script>set_cargoType(1);</script-->
+          <script>set_radio(1);</script>
+        </binding>
+      </radio>
+       
+    </group>
+
+  
+  <hrule/>
+  
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>1</stretch></empty>
+
+        <checkbox>
+            <row>0</row>
+            <col>1</col>
+            <colspan>2</colspan>
+            <halign>left</halign>
+            <name>hide-replay</name>
+            <label>Cargo Docked (otherwise it is hung)</label>
+            <property>sim/model/cargo-type</property>
+            <binding>
+                <command>dialog-apply</command>
+                <object-name>hide-replay</object-name>
+            </binding>
+        </checkbox>
+    <empty><stretch>1</stretch></empty>
+
+  </group>
+  <hrule/>
+	<default-padding>2</default-padding>
+	<font>
+		<name>HELVETICA_12</name>
+	</font>
+	<!--color>
+		<red>0</red>
+		<green>0</green>
+		<blue>0</blue>
+		<alpha>0</alpha>
+	</color-->
+	<text>
+		<label>000</label>
+		<property>/position/altitude-agl-ft</property>
+                <format>%3.0f</format>
+		<live>true</live>
+		<color>
+			<red>0.9</red>
+			<green>0.4</green>
+			<blue>0.2</blue>
+			<alpha>1</alpha>
+		</color>
+	</text>
+
+<!-- the title bar -->
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>true</stretch></empty>
+    <text>
+      <label>Aerotowing Advanced Configuration</label>
+    </text>
+    <empty><stretch>true</stretch></empty>
+  </group>
+
+  <hrule/>
+  <hrule/>
+
+<!-- advanced aerotowing parameters -->
+  <!-- X pos -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>Hook Position X</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f m</format>
+        <property>/sim/hitches/aerotow/local-pos-x</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>-10 meters</label>
+        </text>
+      </group>
+      <slider>
+        <name>hook-local-pos-x</name>
+        <property>/sim/hitches/aerotow/local-pos-x</property>
+        <min>-10</min>
+        <max>10</max>
+        <step>0.2</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>10 meters</label>
+        </text>
+      </group>
+    </group>
+  </group>
+    <!-- Y pos -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>Hook position Y</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f m </format>
+        <property>/sim/hitches/aerotow/local-pos-y</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>-10 meters</label>
+        </text>
+      </group>
+      <slider>
+        <name>hook-local-pos-y</name>
+        <property>/sim/hitches/aerotow/local-pos-y</property>
+        <min>-10</min>
+        <max>10</max>
+        <step>0.2</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>10 meters</label>
+        </text>
+      </group>
+    </group>
+  </group>
+<!-- Z pos -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>Hook position Z</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>9999</label>
+        <live>true</live>
+        <format>%0.2f m</format>
+        <property>/sim/hitches/aerotow/local-pos-z</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+       <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>-30 meters</label>
+        </text>
+      </group>
+      <slider>
+        <name>aerotow_length</name>
+        <property>/sim/hitches/aerotow/local-pos-z</property>
+        <min>-30</min>
+        <max>0</max>
+	<step>0.2</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>0 meters</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+  <hrule>test de trait</hrule>
+  <hrule>tow</hrule>
+  
+  <!-- rope exists -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>rope exists</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f </format>
+        <property>/sim/hitches/aerotow/rope/exist</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>0</label>
+        </text>
+      </group>
+      <slider>
+        <name>rope-exists</name>
+        <property>/sim/hitches/aerotow/rope/exist</property>
+        <min>0</min>
+        <max>10</max> <!-- put 10 because it's a double and don't know why -->
+        <step>1</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>10</label>
+        </text>
+      </group>
+    </group>
+  </group>
+   
+  <!-- rope diameter -->
+   <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>rope diameter</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f m</format>
+        <property>/sim/hitches/aerotow/rope/rope-diameter-mm</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>5 mm</label>
+        </text>
+      </group>
+      <slider>
+        <name>rope diameter in mm</name>
+        <property>/sim/hitches/aerotow/rope/rope-diameter-mm</property>
+        <min>5</min>
+        <max>500</max>
+        <step>5</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>500 mm</label>
+        </text>
+      </group>
+    </group>
+  </group>
+  
+  <hrule>tow</hrule>
+  <!-- tow elastic-constant -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>tow elastic-constant</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f m</format>
+        <property>/sim/hitches/aerotow/tow/elastic-constant</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>500</label>
+        </text>
+      </group>
+      <slider>
+        <name>elastic-constant</name>
+        <property>/sim/hitches/aerotow/tow/elastic-constant</property>
+        <min>500</min>
+        <max>20000</max>
+        <step>500</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>20000</label>
+        </text>
+      </group>
+    </group>
+  </group>  
+  
+  <!-- tow break-force -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>tow break-force</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f m</format>
+        <property>/sim/hitches/aerotow/tow/break-force</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>1000</label>
+        </text>
+      </group>
+      <slider>
+        <name>elastic-constant</name>
+        <property>/sim/hitches/aerotow/tow/break-force</property>
+        <min>1000</min>
+        <max>200000</max>
+        <step>1000</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>200000</label>
+        </text>
+      </group>
+    </group>
+  </group>  
+  
+  <!-- mp-auto-connect-period -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>mp-auto-connect-period</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f m</format>
+        <property>/sim/hitches/aerotow/mp-auto-connect-period</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>0.1 sec</label>
+        </text>
+      </group>
+      <slider>
+        <name>elastic-constant</name>
+        <property>/sim/hitches/aerotow/mp-auto-connect-period</property>
+        <min>0.1</min>
+        <max>2</max>
+        <step>0.1</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>2 sec</label>
+        </text>
+      </group>
+    </group>
+  </group>  
+  
+  <!-- tow length -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>tow length</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f m</format>
+        <property>/sim/hitches/aerotow/tow/length</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>0.5 meters</label>
+        </text>
+      </group>
+      <slider>
+        <name>tow-length</name>
+        <property>/sim/hitches/aerotow/tow/length</property>
+        <min>0.5</min>
+        <max>150</max>
+        <step>0.5</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>150 meters</label>
+        </text>
+      </group>
+    </group>
+  </group>
+   
+  <!-- tow weight-per-meter -->
+   <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>tow weight-per-meter</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f m</format>
+        <property>/sim/hitches/aerotow/tow/weight-per-m-kg-m</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>0.005</label>
+        </text>
+      </group>
+      <slider>
+        <name>weight-per-m-kg-m</name>
+        <property>/sim/hitches/aerotow/tow/weight-per-m-kg-m</property>
+        <min>0.005</min>
+        <max>5</max>
+        <step>0.005</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>5</label>
+        </text>
+      </group>
+    </group>
+  </group> 
+  
+  <!-- rope in tow exists -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>rope in tow exists</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f </format>
+        <property>/sim/hitches/aerotow/tow/rope/exist</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>0</label>
+        </text>
+      </group>
+      <slider>
+        <name>rope-exists</name>
+        <property>/sim/hitches/aerotow/tow/rope/exist</property>
+        <min>0</min>
+        <max>10</max> <!-- put 10 because it's a double and don't know why -->
+        <step>1</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>10</label>
+        </text>
+      </group>
+    </group>
+  </group>
+   
+  <!-- rope diameter -->
+   <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>rope in tow diameter</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f m</format>
+        <property>/sim/hitches/aerotow/tow/rope/rope-diameter-mm</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>5 mm</label>
+        </text>
+      </group>
+      <slider>
+        <name>rope in tow diameter in mm</name>
+        <property>/sim/hitches/aerotow/tow/rope/rope-diameter-mm</property>
+        <min>5</min>
+        <max>500</max>
+        <step>5</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>500 mm</label>
+        </text>
+      </group>
+    </group>
+  </group>
+  
+<hrule>test de trait</hrule>
+  <hrule>tow</hrule>                            
+  <hrule/>
+  <hrule/>
+
+<!-- bottom line - ->
+  <group>
+    <layout>hbox</layout>
+    <button>
+      <legend>Reset Properties</legend>
+      <binding>
+        <command>nasal</command>
+        <script>dg101g.resetTowing()</script>
+      </binding>
+    </button>
+    <empty><stretch>true</stretch></empty>
+    <button>
+      <legend>Close</legend>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+
+ bottomline -->
+
+
+  <!-- possible draggers listing -->
+    <nasal>
+      <open>
+      </open>
+      <close>
+      </close>
+    </nasal>
+</PropertyList>

@@ -1,0 +1,256 @@
+ <hrule>test de trait</hrule>
+  <hrule>tow</hrule>
+  
+  <!-- rope exists -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>rope exists</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f </format>
+        <property>/sim/hitches/aerotow/tow/rope/exist</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>0</label>
+        </text>
+      </group>
+      <slider>
+        <name>rope-exists</name>
+        <property>/sim/hitches/aerotow/tow/rope/exist</property>
+        <min>0</min>
+        <max>10</max> <!-- put 10 because it's a double and don't know why -->
+        <step>1</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>10</label>
+        </text>
+      </group>
+    </group>
+  </group>
+   
+  <!-- rope diameter -->
+   <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>rope diameter</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f m</format>
+        <property>/sim/hitches/aerotow/tow/rope/rope-diameter-mm</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>5 mm</label>
+        </text>
+      </group>
+      <slider>
+        <name>rope diameter in mm</name>
+        <property>/sim/hitches/aerotow/tow/rope/rope-diameter-mm</property>
+        <min>5</min>
+        <max>500</max>
+        <step>5</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>500 mm</label>
+        </text>
+      </group>
+    </group>
+  </group>
+   
+  
+  <!--  mp-auto-connect-period -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>mp-auto-connect-period</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f m</format>
+        <property>/sim/hitches/aerotow/mp-auto-connect-period</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>0.1 sec</label>
+        </text>
+      </group>
+      <slider>
+        <name>mp-auto-connect-period</name>
+        <property>/sim/hitches/aerotow/mp-auto-connect-period</property>
+        <min>0.1</min>
+        <max>2</max>
+        <step>0.1</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>2 sec</label>
+        </text>
+      </group>
+    </group>
+  </group>  
+  
+<hrule>test de trait</hrule>
+  <hrule>tow</hrule>
+  
+  <!-- tow length -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>tow length</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f m</format>
+        <property>/sim/hitches/aerotow/tow/length</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>0.5 meters</label>
+        </text>
+      </group>
+      <slider>
+        <name>tow-length</name>
+        <property>/sim/hitches/aerotow/tow/length</property>
+        <min>0.5</min>
+        <max>150</max>
+        <step>0.5</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>150 meters</label>
+        </text>
+      </group>
+    </group>
+  </group>
+   
+  <!-- tow weight-per-meter -->
+   <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>tow weight-per-meter</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f m</format>
+        <property>/sim/hitches/aerotow/tow/weight-per-m-kg-m</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>0.005</label>
+        </text>
+      </group>
+      <slider>
+        <name>weight-per-m-kg-m</name>
+        <property>/sim/hitches/aerotow/tow/weight-per-m-kg-m</property>
+        <min>0.005</min>
+        <max>5</max>
+        <step>0.005</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>5</label>
+        </text>
+      </group>
+    </group>
+  </group>         

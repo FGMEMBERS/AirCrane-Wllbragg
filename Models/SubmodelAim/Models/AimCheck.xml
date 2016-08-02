@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <path>AimCheck.ac</path>
+  <enable-hot type="bool">false</enable-hot>
+  
+  <animation>
+  <object-name>AimLine</object-name>
+  <object-name>AimSphere</object-name>
+  <type>rotate</type>
+  <property>aim/yaw</property>
+  <factor>1</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>0</x-m>
+   <y-m>0</y-m>
+   <z-m>0</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>-1</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <object-name>AimLine</object-name>
+  <object-name>AimSphere</object-name>
+  <type>rotate</type>
+  <property>aim/pitch</property>
+  <factor>1</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>0</x-m>
+   <y-m>0</y-m>
+   <z-m>0</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <object-name>AimLine</object-name>
+  <type>scale</type>
+  <x-offset>50</x-offset>
+  <y-offset>1</y-offset>
+  <z-offset>1</z-offset>
+ </animation>
+ 
+ <animation>
+  <object-name>AimSphere</object-name>
+  <type>translate</type>
+  <expression><value>50</value></expression>
+  <factor>1</factor>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ 
+</PropertyList>
+

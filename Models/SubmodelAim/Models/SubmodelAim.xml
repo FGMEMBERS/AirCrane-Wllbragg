@@ -1,0 +1,20 @@
+
+
+<!-- 3D Model by Alexdark, obtained from Blend Swap -->
+
+<PropertyList>
+
+
+ <!-- aim checking model -->
+ <model>
+  <path>Aircraft/SubmodelAim/Models/AimCheck.xml</path>
+  <name>AimCheck</name>
+  <offsets>
+   <x-m>0</x-m>
+   <y-m>0</y-m>
+   <z-m>2</z-m>
+   <heading-deg>180</heading-deg>
+  </offsets>
+ </model>
+
+</PropertyList>

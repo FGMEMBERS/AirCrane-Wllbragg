@@ -40,7 +40,7 @@ to define this.  The allowed properties are:
 <PropertyList>
 	<submodel>
 	    <name>CargoSubmodel</name>
-	    <model>Aircraft/AirCrane/Models/Cargo.xml</model>
+	    <model>Aircraft/AirCrane/Models/Cargo/Cargo.xml</model>
 	    <trigger>controls/cargo-release</trigger>  
 	    <speed>0</speed>
 	    <repeat>false</repeat>
@@ -69,10 +69,27 @@ to define this.  The allowed properties are:
 			y-offset = 0
 			z-offset = -103
 		-->
-		<x-offset>-2.5</x-offset>
+<!--####################################-->
+<!--### ajout pour cargochoice #### -->
+                <!--x-offset>-2.5</x-offset>
 		<y-offset>0</y-offset>
-		<z-offset>-11</z-offset>
-	    <yaw-offset>0</yaw-offset>
+		<z-offset>-3.25</z-offset-->
+
+                <x-m>
+                    <property>/ai/models/aircraft[0]/x-m-offset</property>
+                    <offset>4</offset>
+                </x-m>
+		<y-m>
+                    <property>/ai/models/aircraft[0]/y-m-offset</property>
+                    <offset>0</offset>
+                </y-m>
+		<z-m>
+                    <property>/ai/models/aircraft[0]/z-m-offset</property>
+                    <offset>-3.25</offset>
+                </z-m>
+<!--### ajout pour cargochoice - - - ###-->                
+<!--####################################-->
+                <yaw-offset>0</yaw-offset>
 	    <pitch-offset>0</pitch-offset>
 		<buoyancy>0</buoyancy> 
 	    <cd>0.6</cd>

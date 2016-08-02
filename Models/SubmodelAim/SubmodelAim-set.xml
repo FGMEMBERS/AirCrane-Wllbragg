@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+  Nimitz -set file for FlightGear.
+
+  Copyright (C) 2007 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is released under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+	<sim>
+
+		<flight-model>null</flight-model>
+
+		<submodels> 
+    		<serviceable type="bool">true</serviceable>
+			<path>Models/submodels.xml</path>
+		</submodels>
+
+		<model>
+			<path>Aircraft/SubmodelAim/Models/SubmodelAim.xml</path>
+		</model>
+		
+ </sim>
+ 
+ <aim>
+  <yaw>0</yaw>
+  <pitch>0</pitch>
+  <fire type="bool">true</fire>
+ </aim>
+
+</PropertyList>

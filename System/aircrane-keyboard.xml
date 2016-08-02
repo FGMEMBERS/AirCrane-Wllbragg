@@ -97,9 +97,28 @@
 		<name>Ctrl-O</name>
 		<desc>Auto Attach Cargo</desc>
 		<binding>
-		  <command>property-assign</command>
-		  <property>sim/model/cargo-auto-hook</property>
-		  <value type="bool">true</value>
+		<command>nasal</command>
+          	<script>
+		  setprop("sim/model/cargo-auto-hook", !getprop("sim/model/cargo-auto-hook"));
+		  if ( getprop("sim/model/cargo-auto-hook") ) {
+              		 gui.popupTip( "PONPON auto hook on", 1);
+            	 } else 
+		 {
+		    gui.popupTip( "PONPON auto hook off", 1);
+		 }
+            	<!-- if ( getprop("sim/model/cargo-auto-hook") ) {
+              		setprop("sim/model/cargo-auto-hook", 0);
+			 gui.popupTip( "PONPON auto hook on", 1);
+            	 } else 
+		 {
+		   setprop("sim/model/cargo-auto-hook", 1);
+		    gui.popupTip( "PONPON auto hook off", 1);
+		 }
+		 -->
+		</script>
+		<!--command>property-assign</command>
+		<property>sim/model/cargo-auto-hook</property>
+		<value type="bool">true</value-->
 		</binding>
 	</key>
 	<key n="79">

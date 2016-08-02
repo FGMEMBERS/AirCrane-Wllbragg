@@ -6,7 +6,7 @@
   <!--sim include="System/views.xml"-->
 
     <description>AirCrane (Yasim)</description>
-    <author>BARANGER Emmanuel (3D), Heiko Schulz (FDM)</author>
+    <author>BARANGER Emmanuel (3D), Heiko Schulz (FDM), Wayne Bragg (cargo)</author>
     <status>alpha</status>
     <license>GPL v2</license>
 	<aircraft-version>0.3</aircraft-version>
@@ -22,8 +22,8 @@
     </sound>
 	
 	<!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX MY CARGO ADDITION XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
-	<submodels>
-        <path>Aircraft/AirCrane/Models/Cargo-submodel.xml</path>
+    <submodels>
+      <path>Aircraft/AirCrane/Models/Cargo-submodel.xml</path>
     </submodels>
 	<!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXX END MY CARGO ADDITION XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
 	
@@ -145,7 +145,7 @@
       <file>Aircraft/AirCrane/Nasal/bladevisible.nas</file>
 	  
 		<!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX MY CARGO ADDITION XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
-		<file>Aircraft/AirCrane/Nasal/Cargo.nas</file>
+		<file>Aircraft/AirCrane/Nasal/cargo/Cargo.nas</file>
 		<!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXX END MY CARGO ADDITION XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
 	
     </aircrane>
