@@ -54,7 +54,7 @@ props.globals.initNode("sim/hitches/aerotow/rope/rope-diameter-mm", 60, "INT" );
 #tow/length in meters
 props.Node.new({ "sim/hitches/aerotow/tow/length":0 });
 props.globals.initNode("sim/hitches/aerotow/tow/length", 98, "INT" );
-	
+
 ################################# properties for hitches #######################################
 # Cargo Docked
 # 	shippingContainer.ac
@@ -145,7 +145,7 @@ var init_towCargo_dialog = func () {
 	props.globals.getNode ("/sim/menubar/default/menu["~cargo_menuNum~"]/item[1]/label", 1).setValue("Hook Assist");
     props.globals.getNode ("/sim/menubar/default/menu["~cargo_menuNum~"]/item[1]/binding/command", 1).setValue("nasal");
 	props.globals.getNode ("/sim/menubar/default/menu["~cargo_menuNum~"]/item[1]/binding/script", 1).setValue('props.globals.getNode("controls/hook-assist").setBoolValue(!props.globals.getNode("controls/hook-assist").getBoolValue())');
-   	
+
 	fgcommand ("gui-redraw");
 				
 }
@@ -173,7 +173,7 @@ AircraftCargo.new = func {
   # (currently to much teleporting)
   obj.realTime = props.globals.getNode( "controls/cargo-realtime", 1 );
   obj.aiAlt=0;
-  
+
   obj.cargoParent = "";
   obj.cargoName = "";
   obj.hookDistance = 1e-9;
@@ -184,12 +184,12 @@ AircraftCargo.new = func {
   obj.hooked = 0;
   obj.cargoFalling = 0;
   obj.minDist = 999;
-    
+
   # needs adjusting for best performance
   obj.interval = .025;
 
   obj.timer();
-  
+
   return obj;
 }
 
